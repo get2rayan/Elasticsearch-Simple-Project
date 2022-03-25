@@ -57,6 +57,9 @@ We have two application:
 
 
 The application runs on http://localhost:3000/, and have the following routes:
+
 `http://localhost:3000/episodes/create` -> "push" the static data of the episodes list to the Elasticsearch.
+
 `http://localhost:3000/episodes/findAll` -> show all the results.
+
 `http://localhost:3000/episodes/findByID/:id` -> find an episode by its ID.
