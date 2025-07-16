@@ -1,13 +1,21 @@
 import elasticsearch from "elasticsearch"
 
-function getClient() {
-    // The `log: "trace"` attribute will show Elastic Client log.
-    const client = new elasticsearch.Client({
-        host: "localhost:9200",
-        //log: "trace"
-    })
+class elasticClient {
+    private static instance: elasticsearch.Client
+    private constructor() {}
 
-    return client
+    public static getInstance(): elasticsearch.Client {
+        if (!elasticClient.instance) {
+            elasticClient.instance = new elasticsearch.Client({
+                host: "localhost:9200",
+                //log: "trace"
+            })
+        }
+        return elasticClient.instance
+    }
 }
 
+function getClient(): elasticsearch.Client {
+    return elasticClient.getInstance()
+}
 export default getClient
